@@ -40,6 +40,19 @@ We get an unordered list where the counts are correct but full of repeated value
 > Losing: 1
 > Video: 46
 > Video: 46
-> Coronavirus:: 3
+> Coronavirus: 3
 
- 
+###
+# Usage
+###
+```
+# creating a new instance
+s = Scraper.new('news', 20)
+# extracting words
+results = s.extract_words
+
+# display the results in descending order
+results.reverse_each do |k, v|
+  p "#{k}: #{v}"
+end
+```
