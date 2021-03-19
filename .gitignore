@@ -1,0 +1,6 @@
+bin/
+scrape.rb
+.DS_Store
+Gemfile.lock
+.env
+.rspec
