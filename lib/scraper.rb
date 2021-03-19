@@ -29,18 +29,12 @@ class Scraper
   end
  
   def extract_words
-    words = []
+    extracted_words = []
     self.get_links.each do |l|
       page = self.parse_url(l)
-      words << page.title.split(" ")
+      extracted_words << page.title.split(" ").shift.gsub(/[^0-9A-Za-z-]/, '')
     end
-    words = words.collect { |ws| ws.shift }
-    words = words.collect { |ws| ws.gsub(/[^0-9A-Za-z]/, '') }
-  end
-
-  def run!
-    words = self.extract_words
-    words = words.select { |word| word[0] =~ /[A-Z]/ }
+    words = extracted_words.select { |word| word[0] =~ /[A-Z]/ }
     words.each_with_object(Hash.new(0)){ |string, hash| hash[string] += 1 }.sort_by(&:last)
   end
 end
@@ -48,8 +42,8 @@ end
 ##
 ## running the code
 ##
-s = Scraper.new('news', 50)
-results = s.run!
+s = Scraper.new('news', 20)
+results = s.extract_words
 
 results.reverse_each do |k, v|
   p "#{k}: #{v}"
