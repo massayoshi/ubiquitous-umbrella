@@ -39,12 +39,16 @@ class Scraper
   end
 end
 
-##
+####
 ## running the code
-##
-s = Scraper.new('news', 20)
-results = s.extract_words
+####
+#
+## creating a new instance
+# s = Scraper.new('news', 20)
+## extracting words
+# results = s.extract_words
 
-results.reverse_each do |k, v|
-  p "#{k}: #{v}"
-end
+## display the results in descending order
+# results.reverse_each do |k, v|
+#   p "#{k}: #{v}"
+# end

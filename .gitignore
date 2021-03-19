@@ -4,3 +4,4 @@ scrape.rb
 Gemfile.lock
 .env
 .rspec
+spec/fixtures
